@@ -169,10 +169,15 @@ node_modules
 
 credentials.json
 pyrightconfig.json
+
+# Google Service Account credentials
+*-*.json
+kairos-healthcare-*.json
 docs/
 
 # Database files
 *.db
+data/
 
 
 # Examples for development

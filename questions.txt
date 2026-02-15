@@ -1,0 +1,24 @@
+What is stored regarding the patient information and appointment details?
+    How much time is allocated for specific activites?
+    - New Patient Check-up (Exam, X-Ray, Cleaning): 1 hour
+    - Recall Patient (Exam, X-Ray, Cleaning): 30 min
+    - Filling: 30 minutes
+    - More extensive procedure: 1-2 hours
+    Information to collect: 
+        What's the reason for the visit?
+        If new patient:
+            collect personal information, which location
+    Establish a doctor -> procedure mapping
+    Multi locations + how do we want free time to be allocated (specific activities taking time or more rules)
+
+
+
+Incoming Features
+
+- Currently building out a waitlist, customers on waitlist will recieve SMS or phone call about new appt
+- OTP via SMS for security + waitlist + appointment reminders (week before, 2 days before, 24 hours before)
+- All conversation transcripts will be stored for auditing
+- Routing to humans to address request
+- 1. Having a master tab to view all appts and replacing scheduling logic through that
+- Dashboard / software to personalize AI agent
+- 2. Scheduling Logic
