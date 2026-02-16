@@ -45,23 +45,30 @@ def find_openings(
         all_rows = client.get_all_appt_rows()
 
         # Filter for OPEN slots in Dr-Chair lane
-        open_slots = [
-            row
-            for row in all_rows
-            if row.get("status") == "OPEN"
-            and row.get("lane") == "Dr-Chair"
-            and row.get("date_local", "") >= date_start
-            and row.get("date_local", "") <= date_end
-        ]
+        date_start_normalized = str(date_start).strip()
+        date_end_normalized = str(date_end).strip()
+        
+        open_slots = []
+        for row in all_rows:
+            row_status = str(row.get("status", "")).strip()
+            row_lane = str(row.get("lane", "")).strip()
+            row_date = str(row.get("date_local", "")).strip()
+            
+            if (row_status == "OPEN"
+                and row_lane == "Dr-Chair"
+                and row_date >= date_start_normalized
+                and row_date <= date_end_normalized):
+                open_slots.append(row)
 
         # Filter by appt_type if provided
         if appt_type:
-            open_slots = [s for s in open_slots if s.get("appt_type") == appt_type]
+            open_slots = [s for s in open_slots if str(s.get("appt_type", "")).strip() == str(appt_type).strip()]
 
         # Filter by duration_min if provided
         if duration_min:
             open_slots = [
-                s for s in open_slots if int(s.get("duration_min", 0)) == duration_min
+                s for s in open_slots 
+                if int(str(s.get("duration_min", 0)).strip() or 0) == duration_min
             ]
 
         # Sort by date then start time
